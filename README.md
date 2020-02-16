@@ -35,5 +35,5 @@ The whole app is based on the principle that there are 3 different types of invo
  Note: the db must be initialized first so the db file is created
  
 
- Dependencies Note:
+ **Dependencies:**
  flask, flask-sqlalchemy, python-dateutil
