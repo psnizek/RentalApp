@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>RVG Rental & Service Contract Manager</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Contracts</h1>
+
+    <table>
+        <tr>
+            <th>CID</th>
+            <th>Business Partner</th>
+            <th>Product</th>
+            <th style="text-align: left;">Start</th>
+            <th style="text-align: right;">Duration</th>
+            <th>Cur</th>
+            <th style="text-align: right;">1st</th>
+            <th style="text-align: right;">Regular</th>
+            <th style="text-align: right;">Final</th>
+            <th style="text-align: center;">CXL</th>
+            <th style="text-align: center;">CPLT</th>
+            <th  style="text-align: center;" colspan="3">Action</th>
+        </tr>
+        {% for contract in contracts %}
+            <tr>
+                <td style="width: 4%;">{{ contract.contract_id }}</td>
+                <td style="width: 26%;">{{ contract.bpartner_name }}</td>
+                <td style="width: 14%;">{{ contract.product_name }}</td>
+                <td style="width: 6%;">{{ contract.startdate }}</td>
+                <td style="width: 7%; text-align: right;">{{ contract.duration }}</td>
+                <td style="width: 2%;">{{ contract.currency }}</td>
+                <td style="width: 7%; text-align: right;">{{ contract.initial_fee }}</td>
+                <td style="width: 7%; text-align: right;">{{ contract.regular_fee }}</td>
+                <td style="width: 7%; text-align: right;">{{ contract.purch_amnt }}</td>
+                <td style="width: 4%; text-align: center;">{{ contract.cancelled }}</td>
+                <td style="width: 4%; text-align: center;">{{ contract.completed }}</td>
+                <td style="width: 4%; text-align: center;"><a href="/contractsetinactive/{{contract.contract_id}}">Delete</a></td>
+                <td style="width: 4%; text-align: center;"><a href="/contractupdate/{{contract.contract_id}}">Update</a></td>
+                <td style="width: 4%; text-align: center;"><a href="/contractrows/{{contract.contract_id}}">Rows</a></td>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<br><br><br>
+
+<div class="content">
+    <form class="form-horizontal" action="/contract" method="POST">
+        <fieldset>
+
+     <!--   <div class="container">
+            <div class="row">
+                <div class='col-sm-6'>
+                    <div class="input-group date" data-provide="datepicker">
+                        <input type="text" class="form-control">
+                        <div class="input-group-addon">
+                            <span class="glyphicon glyphicon-th"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Form Name -->
+        <legend style="color: rgb(137, 216, 216);">create new contract</legend>
+        
+        <!-- Select List -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="bpartner_name">Business Partner</label>
+            <div class="col-md-4">
+                <select id="bpartner_name" name="bpartner_name">
+                    <option>-- choose business partner --</option>
+                    {% for bpartner in bpartners %}
+                    <option>{{ bpartner.ctlastname + ", " + bpartner.ctfirstname + ", " + bpartner.bpplace }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+
+        <!-- Select List -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="product_name">Product</label>
+            <div class="col-md-4">
+                <select id="product_name" name="product_name">
+                    <option>-- choose product --</option>
+                    {% for product in products %}
+                    <option>{{ product.product_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="startdate">Start</label>  
+            <div class="col-md-4">
+                <input id="startdate" name="startdate" type="text" placeholder="dd.mm.yyyy" class="form-control input-md">
+                
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="duration">Duration</label>  
+            <div class="col-md-4">
+                <input id="duration" name="duration" type="text" placeholder="" class="form-control input-md">
+                
+            </div>
+        </div>
+
+        <!-- Select List -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="currency">Cur</label>
+            <div class="col-md-4">
+                <select id="currency" name="currency">
+                    <option>CZK</option>
+                    <option>EUR</option>
+                </select>
+            </div>
+        </div>
+
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="initial_fee">1st</label>  
+            <div class="col-md-4">
+                <input id="initial_fee" name="initial_fee" type="text" placeholder="" class="form-control input-md">
+                
+            </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="regular_fee">Regular</label>  
+            <div class="col-md-4">
+                <input id="regular_fee" name="regular_fee" type="text" placeholder="" class="form-control input-md">
+                
+            </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="purch_amnt">Final</label>  
+            <div class="col-md-4">
+                <input id="purch_amnt" name="purch_amnt" type="text" placeholder="" class="form-control input-md">
+                
+            </div>
+        </div>
+        
+        <!-- Text input
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="cancelled">CXL</label>  
+            <div class="col-md-4">
+                <input id="cancelled" name="cancelled" type="text" placeholder="" class="form-control input-md">
+                
+            </div>
+        </div> -->
+        
+        <!-- checkbox-->
+        <div class="form-group">
+            <label class="col-md-4 custom-control-label" for="cancelled" style="text-align: right;">CXL</label>
+            <div class="col-md-4">
+                <input class="custom-control-input" type="checkbox" id="cancelled" name="cancelled">
+            </div>
+        </div>
+        
+        <!-- checkbox-->
+        <div class="form-group">
+            <label class="col-md-4 custom-control-label" for="completed" style="text-align: right;">CPLT</label>
+            <div class="col-md-4">
+                <input class="custom-control-input" type="checkbox" id="completed" name="completed">
+            </div>
+        </div>
+
+        <!-- Text input
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="completed">CPLT</label>  
+            <div class="col-md-4">
+                <input id="completed" name="completed" type="text" placeholder="" class="form-control input-md">
+                
+            </div>
+        </div> -->
+        
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="submit"></label>
+            <div class="col-md-4">
+                <button id="submit" name="submit" class="btn btn-primary" value="Add Contract">Submit</button>
+            </div>
+        </div>
+        
+        </fieldset>
+    </form>
+</div>
+    
+{% endblock %}

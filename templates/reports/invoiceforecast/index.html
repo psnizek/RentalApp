@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>RVG Rental & Service Contract Manager</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>REPORTS: invoice forecast next month - {{ month }}</h1>
+</div>
+<br>
+<br>
+
+
+<div class="content">
+    <table>
+        <tr>
+            <th class="col-md-1" style="text-align: right;">Line #</th>
+            <th class="col-md-2">Product</th>
+            <th class="col-md-2">Business Partner</th>
+            <th class="col-md-1">Type</th>
+            <th class="col-md-1" style="text-align: right;">Date</th>
+            <th class="col-md-1" style="text-align: right;">Currency</th>
+            <th class="col-md-1" style="text-align: right;">Amount</th>
+        </tr>
+        {% for row in rows %}
+            <tr style="background-color: rgb(116, 143, 143);">
+                <td class="col-md-1" style="text-align: right;"><a style="color: rgb(228, 175, 0);" href="../contractrows/{{ row.contract_id }}">{{ row.linenumber }}</a></td>
+                <td class="col-md-2">{{ row.product_name }}</td>
+                <td class="col-md-2">{{ row.bpartner_name }}</td>
+                <td class="col-md-1">{{ row.type }}</td>
+                <td class="col-md-1" style="text-align: right;">{{ row.invoicedate }}</td>
+                <td class="col-md-1" style="text-align: right;">{{ row.currency }}</td>
+                <td class="col-md-1" style="text-align: right; font-weight: bolder;">{{ row.amount }}</td>
+            </tr>
+    {% endfor %}
+    <tr style="background-color: rgb(116, 143, 143); border-top: 2px solid white;">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="col-md-1" style="text-align: right; font-weight: bolder;">{{ invoiceruntotal }}</td>
+    </tr>
+</table>
+</div>
+
+   
+{% endblock %}

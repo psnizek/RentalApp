@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>RVG Rental & Service Contract Manager</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Update Product</h1>
+
+
+
+<div class="content">
+    <form class="form-horizontal" action="/update/{{product.product_id}}" method="POST">
+        <fieldset>
+        
+        <!-- Form Name -->
+        <legend style="color: rgb(137, 216, 216);">update product</legend>
+        
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="prodname">Name</label>  
+            <div class="col-md-4">
+                <input id="prodname" name="prodname" type="text" value="{{product.product_name}}" class="form-control input-md">
+                
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="proddescription">Description</label>  
+            <div class="col-md-4">
+                <input id="proddescription" name="proddescription" type="text" value="{{product.product_description}}" class="form-control input-md">
+                
+            </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="idemid">idempiere ID</label>  
+            <div class="col-md-4">
+                <input id="idemid" name="idemid" type="text" value="{{product.idem_product_id}}" class="form-control input-md">
+                
+            </div>
+        </div>
+        
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="submit"></label>
+            <div class="col-md-4">
+                <button id="submit" name="submit" class="btn btn-primary" value="Update">Submit</button>
+            </div>
+        </div>
+        
+        </fieldset>
+    </form>
+</div>
+    
+{% endblock %}

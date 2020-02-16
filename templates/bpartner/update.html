@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>RVG Rental & Service Contract Manager</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Update Business-Partner</h1>
+
+
+
+<div class="content">
+    <form class="form-horizontal" action="/bpupdate/{{bpartner.bpartner_id}}" method="POST">
+        <fieldset>
+        
+        <!-- Form Name -->
+        <legend style="color: rgb(137, 216, 216);">update business-partner</legend>
+        
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="idemid">idempiere ID</label>  
+            <div class="col-md-4">
+                <input id="idemid" name="idemid" type="text" placeholder="" value="{{bpartner.idem_bpartner_id}}" class="form-control input-md">
+                
+            </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="bpname">BP Name</label>  
+            <div class="col-md-4">
+                <input id="bpname" name="bpname" type="text" placeholder="" value="{{bpartner.bpname}}" class="form-control input-md">
+                
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="ctfirstname">Firstname</label>  
+            <div class="col-md-4">
+                <input id="ctfirstname" name="ctfirstname" type="text" placeholder="" value="{{bpartner.ctfirstname}}" class="form-control input-md">
+                
+            </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="ctlastname">Lastname</label>  
+            <div class="col-md-4">
+                <input id="ctlastname" name="ctlastname" type="text" placeholder="" value="{{bpartner.ctlastname}}" class="form-control input-md">
+                
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="bpplace">Place</label>  
+            <div class="col-md-4">
+                <input id="bpplace" name="bpplace" type="text" placeholder="" value="{{bpartner.bpplace}}" class="form-control input-md">
+                
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="bpzip">ZIP</label>  
+            <div class="col-md-4">
+                <input id="bpzip" name="bpzip" type="text" placeholder="" value="{{bpartner.bpzip}}" class="form-control input-md">
+                
+            </div>
+        </div>
+    
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="bpcountry">Country</label>  
+            <div class="col-md-4">
+                <input id="bpcountry" name="bpcountry" type="text" placeholder="" value="{{bpartner.bpcountry}}" class="form-control input-md">
+                
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="submit"></label>
+            <div class="col-md-4">
+                <button id="submit" name="submit" class="btn btn-primary" value="Add BPartner">Submit</button>
+            </div>
+        </div>
+        
+        </fieldset>
+    </form>
+</div>
+
+
+
+
+{% endblock %}

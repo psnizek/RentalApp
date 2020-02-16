@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>RVG Rental & Service Contract Manager</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Business-Partners</h1>
+
+    <table>
+        <tr>
+            <th>ERP ID</th>
+            <th>BP Name</th>
+            <th>Active</th>
+            <th>Created</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Place</th>
+            <th>ZIP</th>
+            <th>Country</th>
+            <th colspan="2">Action</th>
+        </tr>
+        {% for bpartner in bpartners %}
+            <tr>
+                <td style="width: 5%;">{{ bpartner.idem_bpartner_id }}</td>
+                <td style="width: 15%;">{{ bpartner.bpname }}</td>
+                <td style="width: 5%;">{{ bpartner.is_active }}</td>
+                <td style="width: 5%;">{{ bpartner.date_created.date() }}</td>
+                <td style="width: 15%;">{{ bpartner.ctfirstname }}</td>
+                <td style="width: 15%;">{{ bpartner.ctlastname }}</td>
+                <td style="width: 15%;">{{ bpartner.bpplace }}</td>
+                <td style="width: 5%;">{{ bpartner.bpzip }}</td>
+                <td style="width: 10%;">{{ bpartner.bpcountry }}</td>
+                <td style="width: 5%;"><a href="/bpsetinactive/{{bpartner.bpartner_id}}">Delete</a></td>
+                <td style="width: 5%;"><a href="/bpupdate/{{bpartner.bpartner_id}}">Update</a></td>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+    <br><br><br>
+
+<div class="content">
+    <form class="form-horizontal" action="/bpartner" method="POST">
+        <fieldset>
+        
+        <!-- Form Name -->
+        <legend style="color: rgb(137, 216, 216);">create new business-partner</legend>
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="idemid">idempiere ID</label>  
+            <div class="col-md-4">
+                <input id="idemid" name="idemid" type="text" placeholder="" class="form-control input-md">
+                
+            </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="bpname">BP Name</label>  
+            <div class="col-md-4">
+                <input id="bpname" name="bpname" type="text" placeholder="" class="form-control input-md">
+                
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="ctfirstname">Firstname</label>  
+            <div class="col-md-4">
+                <input id="ctfirstname" name="ctfirstname" type="text" placeholder="" class="form-control input-md">
+                
+            </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="ctlastname">Lastname</label>  
+            <div class="col-md-4">
+                <input id="ctlastname" name="ctlastname" type="text" placeholder="" class="form-control input-md">
+                
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="bpplace">Place</label>  
+            <div class="col-md-4">
+                <input id="bpplace" name="bpplace" type="text" placeholder="" class="form-control input-md">
+                
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="bpzip">ZIP</label>  
+            <div class="col-md-4">
+                <input id="bpzip" name="bpzip" type="text" placeholder="" class="form-control input-md">
+                
+            </div>
+        </div>
+    
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="bpcountry">Country</label>  
+            <div class="col-md-4">
+                <input id="bpcountry" name="bpcountry" type="text" placeholder="" value="Česká Republika" class="form-control input-md">
+                
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="submit"></label>
+            <div class="col-md-4">
+                <button id="submit" name="submit" class="btn btn-primary" value="Add BPartner">Submit</button>
+            </div>
+        </div>
+        
+        </fieldset>
+    </form>
+</div>
+    
+{% endblock %}
