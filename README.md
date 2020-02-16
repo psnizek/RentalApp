@@ -30,3 +30,10 @@ The whole app is based on the principle that there are 3 different types of invo
  1.   initial payment (start of the lease, arbitrary amount usually higher than regular lease rate)
  2.   regular fee (normal regular monthly lease) usually 11 or 23 times - depending on the contract duration
  3.   final purchase - the lease taker has the right to buy the product after the lease is completed
+ 
+ 
+ Note: the db must be initialized first so the db file is created
+ 
+
+ Dependencies Note:
+ flask, flask-sqlalchemy, python-dateutil
