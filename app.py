@@ -235,7 +235,7 @@ def cindex():
             Businesspartner.bpname).all()
 
         contracts = Contract.query.order_by(
-            Contract.startdate).all()
+            Contract.startdate.desc()).all()
         for c in contracts:
             c.startdate = datetime.strftime(c.startdate, "%d.%m.%Y")
             c.duration = str(c.duration)
