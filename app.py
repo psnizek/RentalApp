@@ -1,4 +1,5 @@
-import sys, copy
+import sys
+import copy
 from distutils import util
 from flask import Flask, render_template, url_for, request, redirect
 from sqlalchemy.exc import SQLAlchemyError
@@ -78,7 +79,7 @@ def index():
             return 'There was an issue adding the product'
 
     else:
-        products = Product.query.order_by(Product.date_created).all()
+        products = Product.query.order_by(Product.product_name).all()
         return render_template('prod/index.html', products=products)
 
 
@@ -142,7 +143,7 @@ def bpindex():
 
     else:
         bpartners = Businesspartner.query.order_by(
-            Businesspartner.date_created).all()
+            Businesspartner.ctlastname).all()
         return render_template('bpartner/index.html', bpartners=bpartners)
 
 
@@ -400,7 +401,7 @@ def invoicerun_index():
             self.linenumber = linenumber
             self.product_name = product_name
             self.bpartner_name = bpartner_name
-            self.type = type 
+            self.type = type
             self.invoicedate = invoicedate
             self.currency = currency
             self.amount = amount
@@ -478,7 +479,7 @@ def invoiceforecast_index():
             self.linenumber = linenumber
             self.product_name = product_name
             self.bpartner_name = bpartner_name
-            self.type = type 
+            self.type = type
             self.invoicedate = invoicedate
             self.currency = currency
             self.amount = amount
@@ -556,7 +557,7 @@ def reportsfinalindex():
             self.linenumber = linenumber
             self.product_name = product_name
             self.bpartner_name = bpartner_name
-            self.type = type 
+            self.type = type
             self.invoicedate = invoicedate
             self.currency = currency
             self.amount = amount
