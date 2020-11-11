@@ -1,8 +1,7 @@
 ## Welcome to the RentalApp wiki!
 super simple contract manager for leased devices and service subscriptions
 
-This app is written in Python 3 and tested on Python 3.7. The app doesn't look nice but it does its job. I wrote it in only 1 week throughout evening hours.
-
+This app is written in Python 3 and tested on Python 3.7. The quick'n'dirty app doesn't look nice but it does its job. 
 **Purpose:**
 
 Simple tool to manage leases and service subscriptions.
